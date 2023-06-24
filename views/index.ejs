@@ -214,13 +214,10 @@ table {
                 <select name="task_type" class="task_type_call" id="tt-<%=i._id%>">
                 <% if(i.task_type == "pending"){ %>
                   <option selected value="pending">Pending</option>
-                <% } else { %>
-                    <option value="pending">Pending</option>
-                <% } %>
-                <% if(i.task_type == "done"){ %>
-                  <option selected value="done">Done</option>
-                  <% } else { %>
                   <option value="done">Done</option>
+                <% } else { %>
+                  <option value="pending">Pending</option>
+                  <option selected value="done">Done</option>
                 <% } %>
                 </select>
               </td>
@@ -267,7 +264,7 @@ table {
         item.addEventListener('change',()=>{
           $.ajax({
           type: 'POST',
-          url: '/update-task_type/'+item.id.split('-')[1],
+          url: '/update-task_type/'+item.id.split('t')[1],
           data: {task_type:item.value}, 
           success: function(response) {}
           });
@@ -275,7 +272,7 @@ table {
       })
 
       // importing users from ejs to js
-      let users =  - JSON.stringify(users) ;
+      let users =  <%- JSON.stringify(users) %>;
 
       // validating duplicate email
       function validateEmail() {

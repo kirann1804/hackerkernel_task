@@ -76,7 +76,6 @@ router.get('/export',async (req,res)=>{
   res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 
   res.send(excelBuffer);
-
 })
 
 function htmlToSheetData(html) {
